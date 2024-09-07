@@ -1,0 +1,57 @@
+@import "../../../variables.scss";
+
+label {
+  color: $grey;
+  span {
+    color: $red;
+  }
+}
+
+.card {
+  border-radius: 0.5rem;
+}
+
+.focus-border {
+  height: 2px;
+  width: 100%;
+  background: $primary;
+  display: block;
+  transform: scaleX(0) translateY(-2px);
+  transform-origin: 50%;
+  opacity: 0;
+  transition: all 0.15s linear;
+}
+input {
+  outline: 0;
+  background: transparent;
+
+  &:focus + .focus-border {
+    transform: scaleX(1) translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  // margin: 2em 1.5em;
+  .box {
+    border: 1px solid $light-grey;
+  }
+  .error {
+    color: $red;
+  }
+}
+
+.cancelIcon {
+  border: none;
+  background: $white;
+}
+
+.left {
+  margin-left: 5.5em;
+}
+:host ::ng-deep label {
+  font-size: 12px !important;
+  font-weight: 0 !important;
+}

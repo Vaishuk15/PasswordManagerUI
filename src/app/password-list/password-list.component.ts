@@ -67,7 +67,7 @@ export class PasswordListComponent implements OnInit {
 
   addPassword() {
     this.router
-      .navigate(['master-data/calendars/add-update-calendar/'], {
+      .navigate(['passwords/add-update-password/'], {
         queryParams: { editable: true },
       })
       .catch((err) => {
@@ -79,7 +79,7 @@ export class PasswordListComponent implements OnInit {
   }
   navigateToPassword(passwordId: number, editable: boolean) {
     this.router
-      .navigate(['master-data/calendars/add-update-calendar/', passwordId], {
+      .navigate(['passwords/add-update-password/', passwordId], {
         queryParams: { editable },
       })
       .catch((err: any) => {

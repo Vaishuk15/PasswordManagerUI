@@ -4,7 +4,6 @@ import { PasswordListComponent } from './password-list/password-list.component';
 import { AddUpdatePaswordComponent } from './add-update-pasword/add-update-pasword.component';
 
 const routes: Routes = [
-  { path: '', component: PasswordListComponent },
   {
     path: 'passwords/add-update-password',
     component: AddUpdatePaswordComponent,

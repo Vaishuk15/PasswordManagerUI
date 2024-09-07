@@ -1,0 +1,102 @@
+// .modal-dialog {
+//   box-shadow: 1.2em 1.2em 1.2em rgba(0, 0, 0, 0.5);
+// }
+// .modal {
+//   display: block;
+//   background: rgba(0, 0, 0, 0.5);
+// }
+// .z-1090 {
+//   z-index: 1090;
+// }
+
+.modal {
+  display: block; // Override Bootstrap's default display
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); // Semi-transparent background to create overlay effect
+  z-index: 1050; // Ensure it appears above most other elements
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto; // Handle overflow when modal content is large
+}
+
+.modal-dialog {
+  max-width: 500px; // Set a maximum width for the dialog
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.95); // Small initial scale for subtle animation
+  transition: transform 0.3s ease-in-out; // Animation for the popup effect
+  border-radius: 8px; // Rounded corners for a modern look
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1); // Full scale when shown
+}
+
+.modal-content {
+  background-color: white; // Modal content background
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Slight shadow for a popup effect
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-header {
+  border-bottom: none; // Remove border under the header
+  padding-bottom: 0;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.modal-body {
+  font-size: 1rem;
+  padding-top: 10px;
+  color: #333; // Slightly darker text for readability
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: none; // Remove default border on the footer
+  padding-top: 10px;
+}
+
+.btn {
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.close {
+  font-size: 1.5rem;
+  color: #000;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

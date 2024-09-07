@@ -1,0 +1,40 @@
+<div class="modal">
+  <div
+    class="modal-dialog"
+    role="document"
+    (clickOutside)="confirmModal(false)"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="confirmModal(false)"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="h6">{{ confirmText }}</div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-light"
+          (click)="confirmModal(false)"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="confirmModal(true)"
+        >
+          {{ buttonLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

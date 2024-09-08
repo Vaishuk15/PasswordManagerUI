@@ -25,3 +25,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone repo-url
+    ```
+2. Install project dependencies:
+
+    ```bash
+    npm install
+    ```
+## Project Structure
+  Components: password-list- To list the passwords
+              add-update-password- To add or update the password and validations are added for the form
+              navbar- Navigation bar with title
+              delete-confirmation-dialog- Dialog to confirm the delete operation
+  Models: password- Model for password
+  Services: password-service- Service to interact with the backend
+  Assets: Contains the images used in the project
+  App-routing: Routing configuration
+  App-module: Main module
+  App-component: Main component
+  Environments: Environment configuration
+  Styles: Contains the styles used in the project
+  Variables: Contains the variables used in the project
+  
+  

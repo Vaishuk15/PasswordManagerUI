@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PasswordManagerService } from '../services/password-manager.service'; // Assuming you have a service for fetching passwords
+import { Component } from '@angular/core';
+import { PasswordManagerService } from '../services/password-manager.service';
 import { Password } from '../models/password.model';
 import { Router } from '@angular/router';
 
@@ -8,22 +8,16 @@ import { Router } from '@angular/router';
   templateUrl: './password-list.component.html',
   styleUrls: ['./password-list.component.scss'],
 })
-export class PasswordListComponent implements OnInit {
-  itemPerPage = 10;
-  page = 1;
-  loading = true;
+export class PasswordListComponent {
   passwords: any;
   passwordError = 'No Passwords Found!';
   passwordName = 'name';
-  isListDescending = false;
   deletePopupShown = false;
   deletePasswords: any = {
     id: '',
     app: '',
   };
   confirmText: string = '';
-  totalPasswords: any;
-  sortField: any;
   constructor(
     private passwordService: PasswordManagerService,
     private router: Router
@@ -31,38 +25,15 @@ export class PasswordListComponent implements OnInit {
     this.getPasswords();
   }
 
-  ngOnInit(): void {}
-  sort(key: string) {
-    this.passwordName = key;
-    this.isListDescending = !this.isListDescending;
-  }
-  changePage(pageNumber: number) {
-    this.page = pageNumber;
-    this.getPasswords();
-  }
-
   getPasswords() {
-    // this.layoutService.loaderShown$.next(true);
     this.passwordService.getPasswords().subscribe(
       (response) => {
-        this.loading = false;
         this.passwords = response;
-        this.totalPasswords = this.passwords.length;
       },
       (err) => {
-        this.loading = false;
         this.passwordError = JSON.stringify(err);
       }
-      // () => this.layoutService.loaderShown$.next(false)
     );
-  }
-
-  onChangePerPage(perPage: number) {
-    this.itemPerPage = +perPage;
-    this.page = 1;
-    this.loading = true;
-    this.passwords = [];
-    this.getPasswords();
   }
 
   addPassword() {
@@ -71,7 +42,7 @@ export class PasswordListComponent implements OnInit {
         queryParams: { editable: true },
       })
       .catch((err) => {
-        // this.layoutService.showError(err);
+        alert(' Error adding password: ' + err);
       });
   }
   viewPassword(password: any) {
@@ -83,7 +54,7 @@ export class PasswordListComponent implements OnInit {
         queryParams: { editable },
       })
       .catch((err: any) => {
-        // this.layoutService.showError(err);
+        alert('Error navigating to password: ' + err);
       });
   }
   editPassword(password: any) {
@@ -93,15 +64,10 @@ export class PasswordListComponent implements OnInit {
     this.passwordService.deletePassword(id).subscribe(
       () => {
         this.deletePopupShown = false;
-        // this.layoutService.toast$.next({
-        //   text: 'Success! Calendar  Deleted successfully',
-        //   type: Toast.success,
-        // });
         this.getPasswords();
       },
       (_err) => {
-        console.log(_err);
-        // this.layoutService.showError(_err);
+        alert('Error deleting password');
       }
     );
   }
@@ -114,7 +80,7 @@ export class PasswordListComponent implements OnInit {
   }
   confirmDelete(password: Password): void {
     this.deletePasswords.id = password.id;
-    this.deletePasswords.name = password.app;
+    this.deletePasswords.app = password.app;
     this.confirmText =
       'Are you sure you want to delete ' + this.deletePasswords.app + '?';
     this.deletePopupShown = true;

@@ -51,7 +51,6 @@
               maxlength="25"
               [(ngModel)]="passwordData.category"
               #category="ngModel"
-              required
               [readonly]="!editableForm"
             />
             <span class="focus-border"> </span>
@@ -60,9 +59,6 @@
               class="error"
               *ngIf="category.invalid && (category.dirty || category.touched)"
             >
-              <div *ngIf="category.errors?.['required']">
-                *Category is required.
-              </div>
               <div *ngIf="category.errors?.['minlength']">
                 *Category must be at least 3 characters long.
               </div>

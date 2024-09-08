@@ -20,7 +20,6 @@ export class AddUpdatePaswordComponent {
   passwordDataId: any;
   editableForm: boolean = false;
   buttonName = 'Save';
-  totalPasswords: number = 0;
   message: string = '';
   errorMessage: string = '';
   passwordInfo: any = {};
@@ -63,26 +62,6 @@ export class AddUpdatePaswordComponent {
     this.passwordInfo = this.passwordData;
     this.addOrUpdatePassword(this.passwordInfo);
   }
-
-  // validateCalendarName(event) {
-  //   this.calendarData.name = event.target.value;
-  //   this.validating = true;
-  //   this.master
-  //     .getCalendarByName('Calendar', this.calendarData.name)
-  //     .subscribe({
-  //       next: (calendars: any) => {
-  //         this.validating = false;
-  //         if (calendars?.map((item) => item.name).length > 0) {
-  //           this.message = 'Calendar Name already exists';
-  //         } else {
-  //           this.message = '';
-  //         }
-  //       },
-  //       error: (_err) => {
-  //         this.validating = false;
-  //       },
-  //     });
-  // }
   goBackToPasswordsPage() {
     this.routeNavigate('passwordManagerList');
   }
@@ -94,9 +73,9 @@ export class AddUpdatePaswordComponent {
         : this.passwordService.addPassword(password);
     endpointUrl.subscribe(
       () => {
-        alert('Success! Calendar saved successfully');
+        alert('Success! Password saved successfully');
         setTimeout(() => {
-          this.routeNavigate('/master-data/calendars');
+          this.routeNavigate('passwordManagerList');
         }, 1000);
       },
       (_err) => {
@@ -107,7 +86,7 @@ export class AddUpdatePaswordComponent {
 
   routeNavigate(route: string) {
     this.router.navigate([route]).then(
-      (navi) => {},
+      (navigation) => {},
       (error) => {}
     );
   }

@@ -9,7 +9,7 @@
       >
         <div class="row">
           <div class="col">
-            <label for="name">Password App <span>*</span></label>
+            <label for="name"> App <span>*</span></label>
             <input
               type="text"
               name="name"
@@ -23,7 +23,6 @@
               [readonly]="!editableForm"
             />
             <span class="focus-border"> </span>
-            <!-- <div class="validating" *ngIf="validating">Validating...</div> -->
             <div class="error" *ngIf="message !== ''">*{{ message }}</div>
             <div
               class="error"
@@ -42,7 +41,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <label for="name">Password Category <span>*</span></label>
+            <label for="name"> Category </label>
             <input
               type="text"
               name="category"
@@ -56,7 +55,6 @@
               [readonly]="!editableForm"
             />
             <span class="focus-border"> </span>
-            <!-- <div class="validating" *ngIf="validating">Validating...</div> -->
             <div class="error" *ngIf="message !== ''">*{{ message }}</div>
             <div
               class="error"
@@ -77,21 +75,20 @@
         </div>
         <div class="row">
           <div class="col">
-            <label for="name">Password UserName <span>*</span></label>
+            <label for="name"> UserName <span>*</span></label>
             <input
               type="text"
               name="userName"
               class="form-control"
-              pattern="^[^-\s][a-zA-Z0-9\s]*$"
+              pattern="^\S*$"
               minlength="3"
-              maxlength="25"
+              maxlength="50"
               [(ngModel)]="passwordData.userName"
               #userName="ngModel"
               required
               [readonly]="!editableForm"
             />
             <span class="focus-border"> </span>
-            <!-- <div class="validating" *ngIf="validating">Validating...</div> -->
             <div class="error" *ngIf="message !== ''">*{{ message }}</div>
             <div
               class="error"
@@ -104,8 +101,7 @@
                 *UserName must be at least 3 characters long.
               </div>
               <div *ngIf="userName.errors?.['pattern']">
-                *UserName should be in alphanumeric format.No special
-                characters/empty space allowed
+                *UserName should not contain any empty spaces
               </div>
             </div>
           </div>
@@ -117,7 +113,7 @@
             type="text"
             name="password"
             class="form-control"
-            pattern="^[^-\s][a-zA-Z0-9\s]*$"
+            pattern="^[^\s]*$"
             minlength="3"
             maxlength="25"
             [(ngModel)]="passwordData.decryptedPassword"
@@ -126,7 +122,6 @@
             [readonly]="!editableForm"
           />
           <span class="focus-border"> </span>
-          <!-- <div class="validating" *ngIf="validating">Validating...</div> -->
           <div class="error" *ngIf="message !== ''">*{{ message }}</div>
           <div
             class="error"
@@ -139,8 +134,7 @@
               *Password must be at least 3 characters long.
             </div>
             <div *ngIf="password.errors?.['pattern']">
-              *Password should be in alphanumeric format.No special
-              characters/empty space allowed
+              *Password should not contain any empty spaces
             </div>
           </div>
         </div>

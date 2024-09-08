@@ -2,21 +2,11 @@
 $navbar-height: 60px;
 
 .navbar {
-  background-color: $background-color;
+  background-color: $header-color;
   color: $text-color;
   height: $navbar-height;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
 
   .logo {
     color: #ffffff;
@@ -25,25 +15,14 @@ $navbar-height: 60px;
     text-decoration: none;
 
     &:hover {
-      color: lighten($primary-color, 10%);
+      color: #1e2a5e;
     }
   }
+}
+.container {
+  padding: 0 1rem;
+}
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-
-    li {
-      a {
-        color: $text-color;
-        text-decoration: none;
-        font-size: 1rem;
-
-        &:hover {
-          color: #2c1b47;
-        }
-      }
-    }
-  }
+.mr-4 {
+  margin-right: 4px;
 }

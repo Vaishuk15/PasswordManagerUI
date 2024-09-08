@@ -23,6 +23,7 @@ export class AddUpdatePaswordComponent {
   message: string = '';
   errorMessage: string = '';
   passwordInfo: any = {};
+  showPassword: boolean = false;
 
   constructor(
     private passwordService: PasswordManagerService,
@@ -83,7 +84,9 @@ export class AddUpdatePaswordComponent {
       }
     );
   }
-
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
   routeNavigate(route: string) {
     this.router.navigate([route]).then(
       (navigation) => {},

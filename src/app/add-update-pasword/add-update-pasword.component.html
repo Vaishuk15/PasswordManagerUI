@@ -76,7 +76,7 @@
               type="text"
               name="userName"
               class="form-control"
-              pattern="^\S*$"
+              pattern="^[^\s](.*[^\s])?$"
               minlength="3"
               maxlength="50"
               [(ngModel)]="passwordData.userName"
